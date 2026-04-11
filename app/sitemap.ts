@@ -1,0 +1,3 @@
+import {MetadataRoute} from 'next';import {getAllPosts,CATEGORIES,catSlug} from '../lib/posts';
+const SITE=process.env.NEXT_PUBLIC_SITE_URL||'https://doddy.in';
+export default function s():MetadataRoute.Sitemap{const base=[{url:SITE},{url:`${SITE}/posts`},{url:`${SITE}/about`},{url:`${SITE}/contact`}];const cats=CATEGORIES.map(c=>({url:`${SITE}/category/${catSlug(c)}`}));const posts=getAllPosts().map(p=>({url:`${SITE}/posts/${p.slug}`,lastModified:new Date(p.date)}));return[...base,...cats,...posts];}

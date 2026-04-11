@@ -1,0 +1,1 @@
+export default {pageExtensions:["ts","tsx","mdx"]};

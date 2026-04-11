@@ -1,0 +1,2 @@
+import type {Config} from 'tailwindcss';
+export default {darkMode:'class',content:['./app/**/*.{ts,tsx,mdx}','./components/**/*.{ts,tsx}','./content/**/*.mdx'],theme:{extend:{colors:{bg:'#F7F4EE',ink:'#1C1B1A',heading:'#0E0E0E',accent:'#C2410C',forest:'#3F5E3A',sand:'#EBE6DA'},fontFamily:{serif:['Fraunces','serif'],sans:['Inter','sans-serif']}}},plugins:[]} satisfies Config;

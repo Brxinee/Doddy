@@ -1,0 +1,4 @@
+import {getAllPosts,CATEGORIES,catSlug} from '../../../lib/posts';import PostCard from '../../../components/PostCard';import {notFound} from 'next/navigation';
+export function generateStaticParams(){return CATEGORIES.map(c=>({slug:catSlug(c)}));}
+export function generateMetadata({params}:{params:{slug:string}}){const c=CATEGORIES.find(x=>catSlug(x)===params.slug);return{title:c||'Category'};}
+export default function Cat({params}:{params:{slug:string}}){const cat=CATEGORIES.find(c=>catSlug(c)===params.slug);if(!cat)notFound();const posts=getAllPosts().filter(p=>p.category===cat);return(<div><p className="text-xs uppercase tracking-widest text-forest mb-2">Category</p><h1 className="font-serif text-4xl mb-8">{cat}</h1>{posts.length===0?<p className="opacity-70">No posts here yet.</p>:<div className="grid sm:grid-cols-2 gap-5">{posts.map(p=><PostCard key={p.slug} p={p}/>)}</div>}</div>);}
