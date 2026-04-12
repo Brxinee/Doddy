@@ -1,2 +1,0 @@
-import Link from 'next/link';
-export default function NF(){return(<div className="text-center py-20"><p className="text-xs uppercase tracking-widest text-forest mb-3">404</p><h1 className="font-serif text-5xl mb-4">Page not found</h1><p className="opacity-80 mb-6">This one\'s on us. Or you. Either way, it\'s gone.</p><Link href="/" className="px-5 py-2.5 bg-accent text-white rounded">Back home</Link></div>);}

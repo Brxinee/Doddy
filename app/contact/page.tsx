@@ -1,2 +1,0 @@
-export const metadata={title:'Contact'};
-export default function C(){return(<div className="max-w-2xl prose"><h1 className="font-serif text-4xl mb-4">Contact</h1><p>Easiest way to reach me is email: <a href="mailto:xbrainee@gmail.com">xbrainee@gmail.com</a></p><p>Or DM on Instagram: <a href="https://instagram.com/smell0ff">@smell0ff</a></p><p>I read everything. I don\'t reply to everything, but I read everything.</p></div>);}

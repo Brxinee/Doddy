@@ -1,3 +1,0 @@
-import RSS from 'rss';import {getAllPosts} from '../../lib/posts';
-const SITE=process.env.NEXT_PUBLIC_SITE_URL||'https://doddy.in';
-export function GET(){const feed=new RSS({title:'Doddy.in',description:'Real grooming talk for Indian men.',site_url:SITE,feed_url:`${SITE}/rss.xml`,language:'en'});getAllPosts().forEach(p=>feed.item({title:p.title,url:`${SITE}/posts/${p.slug}`,date:p.date,description:p.excerpt,author:p.author||'Brainee'}));return new Response(feed.xml({indent:true}),{headers:{'Content-Type':'application/xml'}});}
