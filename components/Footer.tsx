@@ -1,2 +1,0 @@
-import Link from 'next/link';
-export default function Footer(){return(<footer className="border-t border-sand dark:border-ink/40 mt-20"><div className="max-w-5xl mx-auto px-6 py-10 text-sm flex flex-wrap justify-between gap-4"><p>© Doddy.in · Real grooming talk for Indian men.</p><div className="flex gap-4"><Link href="/rss.xml">RSS</Link><Link href="/sitemap.xml">Sitemap</Link><a href="https://smelloff.in">Smelloff</a></div></div></footer>);}

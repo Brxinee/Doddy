@@ -1,4 +1,0 @@
-"use client";import Link from 'next/link';import {useState,useEffect} from 'react';
-export default function Header(){const[d,setD]=useState(false);useEffect(()=>{const s=localStorage.getItem('theme')==='dark';setD(s);document.documentElement.classList.toggle('dark',s);},[]);
-const t=()=>{const n=!d;setD(n);document.documentElement.classList.toggle('dark',n);localStorage.setItem('theme',n?'dark':'light');};
-return(<header className="border-b border-sand dark:border-ink/40"><nav className="max-w-5xl mx-auto px-6 py-5 flex justify-between items-center"><Link href="/" className="font-serif text-2xl font-bold">Doddy<span className="text-accent">.</span></Link><div className="flex gap-5 items-center text-sm"><Link href="/posts">Posts</Link><Link href="/about">About</Link><Link href="/contact">Contact</Link><button onClick={t} aria-label="Toggle dark mode" className="px-2 py-1 border border-sand dark:border-ink/40 rounded">{d?'☀':'☾'}</button></div></nav></header>);}
