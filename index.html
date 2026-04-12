@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DODDY — Men's Grooming, Decoded. No BS.</title>
+<meta name="description" content="No-BS grooming, skin, and self-care guides for Indian men. Science-backed. Fluff-free. Written for men who actually want to fix the problem.">
+<meta name="keywords" content="men's grooming India, men's skincare, body odor, how to stop sweating, men's lifestyle blog">
+
+<!-- Open Graph -->
+<meta property="og:title" content="DODDY — Men's Grooming, Decoded">
+<meta property="og:description" content="No-BS grooming guides for Indian men. Science-backed, fluff-free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://doddy.in">
+
+<!-- Schema: Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Doddy",
+  "url": "https://doddy.in",
+  "description": "Men's grooming, skin, and self-care guides for Indian men",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Doddy",
+    "logo": { "@type": "ImageObject", "url": "https://doddy.in/logo.png" }
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,900;1,900&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #080808;
+  --bg-2: #0f0f0f;
+  --bg-3: #161616;
+  --text: #f5f5f5;
+  --text-2: #a0a0a0;
+  --text-3: #666;
+  --accent: #B8FF57;
+  --accent-dim: #7acc30;
+  --border: #1f1f1f;
+  --border-hover: #2a2a2a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+
+/* Announcement */
+.announce {
+  background: var(--accent);
+  color: var(--bg);
+  text-align: center;
+  padding: 0.6rem 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+/* Header */
+header {
+  position: sticky;
+  top: 0;
+  background: rgba(8, 8, 8, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+}
+.nav {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+.logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 1.75rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  line-height: 1;
+}
+.logo-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent);
+}
+.nav-center {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-center a {
+  color: var(--text-2);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-center a:hover, .nav-center a.active { color: var(--accent); }
+.nav-right { display: flex; align-items: center; gap: 0.75rem; }
+.subscribe-btn {
+  background: var(--accent);
+  color: var(--bg);
+  padding: 0.55rem 1.15rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.subscribe-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(184, 255, 87, 0.3);
+}
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* MINIMAL HERO */
+.hero {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 3.5rem 2rem 2.5rem;
+  text-align: left;
+}
+.hero-tagline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+.hero-headline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  max-width: 900px;
+  margin-bottom: 1.25rem;
+}
+.hero-headline em {
+  font-style: italic;
+  color: var(--accent);
+}
+.hero-sub {
+  font-size: 1rem;
+  color: var(--text-2);
+  max-width: 580px;
+  line-height: 1.55;
+}
+
+/* Category Pills */
+.category-bar {
+  max-width: 1400px;
+  margin: 0 auto 2.5rem;
+  padding: 0 2rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  overflow-x: auto;
+}
+.pill {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.pill:hover { border-color: var(--text-2); color: var(--text); }
+.pill.active {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+/* Featured */
+.featured {
+  max-width: 1400px;
+  margin: 0 auto 4rem;
+  padding: 0 2rem;
+}
+.featured-card {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  background: linear-gradient(135deg, var(--bg-2), var(--bg-3));
+  border: 1px solid var(--border);
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.featured-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--accent);
+}
+.featured-card::after {
+  content: 'FEATURED';
+  position: absolute;
+  top: 1.5rem; right: 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 0.3rem 0.6rem;
+}
+.featured-card:hover { border-color: var(--border-hover); }
+.featured-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-3);
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.featured-meta .cat { color: var(--accent); }
+.featured-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.75rem, 3.5vw, 3rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+}
+.featured-title em { font-style: italic; color: var(--accent); }
+.featured-excerpt {
+  color: var(--text-2);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+.read-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  font-size: 0.9rem;
+  transition: gap 0.2s;
+}
+.read-link:hover { gap: 0.9rem; }
+.featured-visual {
+  aspect-ratio: 4/5;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(184, 255, 87, 0.15), transparent 50%),
+    linear-gradient(135deg, #0a0a0a, #1a1a1a);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.featured-visual-text {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 0.9;
+  text-align: center;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, var(--accent), var(--accent-dim));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Section Title */
+.section-title {
+  max-width: 1400px;
+  margin: 0 auto 2rem;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.section-title h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.section-title h2 .num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text-3);
+  margin-right: 0.75rem;
+  font-weight: 500;
+  vertical-align: top;
+}
+.view-all {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.8rem;
+  color: var(--text-2);
+  transition: color 0.2s;
+}
+.view-all:hover { color: var(--accent); }
+
+/* Article Grid */
+.grid {
+  max-width: 1400px;
+  margin: 0 auto 4rem;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+.card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s;
+  min-height: 280px;
+}
+.card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  background: var(--bg-3);
+}
+.card-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-3);
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.card-meta .cat { color: var(--accent); }
+.card-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 1.75rem;
+  line-height: 1.05;
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+  letter-spacing: -0.005em;
+}
+.card-excerpt {
+  color: var(--text-2);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8rem;
+  color: var(--text-3);
+  font-family: 'JetBrains Mono', monospace;
+}
+.card-footer .arrow { color: var(--accent); transition: transform 0.2s; }
+.card:hover .card-footer .arrow { transform: translateX(4px); }
+
+/* Newsletter */
+.newsletter {
+  max-width: 1400px;
+  margin: 0 auto 4rem;
+  padding: 0 2rem;
+}
+.newsletter-inner {
+  background:
+    radial-gradient(circle at 90% 50%, rgba(184, 255, 87, 0.1), transparent 60%),
+    var(--bg-2);
+  border: 1px solid var(--border);
+  padding: 3.5rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.newsletter-inner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--accent);
+}
+.newsletter-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+.newsletter h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.75rem, 3.5vw, 3rem);
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+  max-width: 650px;
+}
+.newsletter h2 em { font-style: italic; color: var(--accent); }
+.newsletter p {
+  color: var(--text-2);
+  font-size: 0.95rem;
+  max-width: 540px;
+  margin-bottom: 1.75rem;
+}
+.newsletter-form {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 480px;
+  margin-bottom: 0.85rem;
+}
+.newsletter-form input {
+  flex: 1;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.9rem 1.1rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.newsletter-form input:focus { border-color: var(--accent); }
+.newsletter-form button {
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  padding: 0.9rem 1.5rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.newsletter-form button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(184, 255, 87, 0.3);
+}
+.newsletter-trust {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-3);
+  letter-spacing: 0.05em;
+}
+.newsletter-trust .accent { color: var(--accent); }
+
+/* Footer */
+footer {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: 3.5rem 2rem 2rem;
+}
+.footer-inner { max-width: 1400px; margin: 0 auto; }
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.footer-brand .logo { font-size: 2rem; margin-bottom: 1rem; }
+.footer-brand p {
+  color: var(--text-2);
+  font-size: 0.88rem;
+  max-width: 320px;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+.socials { display: flex; gap: 0.5rem; }
+.social-btn {
+  width: 38px; height: 38px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.8rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+.social-btn:hover { border-color: var(--accent); color: var(--accent); }
+.footer-col h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+.footer-col a { color: var(--text-2); font-size: 0.85rem; transition: color 0.2s; }
+.footer-col a:hover { color: var(--accent); }
+.footer-bottom {
+  padding-top: 1.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-3);
+}
+.footer-bottom .built-by { color: var(--text-2); }
+.footer-bottom .built-by a { color: var(--accent); font-weight: 500; }
+
+/* Mobile drawer */
+.mobile-drawer {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 200;
+  padding: 2rem;
+  transform: translateX(100%);
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+.mobile-drawer.active { transform: translateX(0); }
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+.drawer-close {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+.drawer-nav { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
+.drawer-nav a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+.drawer-nav a:hover { color: var(--accent); }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .nav-center { display: none; }
+  .featured-card { grid-template-columns: 1fr; padding: 2rem; gap: 2rem; }
+  .grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .nav { padding: 1rem; gap: 0.75rem; }
+  .menu-toggle { display: flex; }
+  .subscribe-btn { padding: 0.5rem 0.9rem; font-size: 0.75rem; }
+  .hero { padding: 2.5rem 1.25rem 1.5rem; }
+  .category-bar, .featured, .grid, .newsletter, .section-title { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .newsletter-inner { padding: 2.5rem 1.5rem; }
+  .newsletter-form { flex-direction: column; }
+  .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+  .featured-card::after { top: 1rem; right: 1rem; }
+  .section-title h2 { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="announce">
+  <strong>NEW</strong> → How to get rid of body odor permanently · <strong>READ</strong>
+</div>
+
+<header>
+  <nav class="nav">
+    <a href="/" class="logo">Doddy<span class="logo-dot"></span></a>
+    <ul class="nav-center">
+      <li><a href="/" class="active">Home</a></li>
+      <li><a href="/grooming">Grooming</a></li>
+      <li><a href="/skin">Skin</a></li>
+      <li><a href="/style">Style</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="subscribe-btn">Subscribe</button>
+      <button class="menu-toggle" onclick="document.getElementById('drawer').classList.add('active')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<div class="mobile-drawer" id="drawer">
+  <div class="drawer-header">
+    <a href="/" class="logo">Doddy<span class="logo-dot"></span></a>
+    <button class="drawer-close" onclick="document.getElementById('drawer').classList.remove('active')">×</button>
+  </div>
+  <ul class="drawer-nav">
+    <li><a href="/">Home</a></li>
+    <li><a href="/grooming">Grooming</a></li>
+    <li><a href="/skin">Skin</a></li>
+    <li><a href="/style">Style</a></li>
+    <li><a href="/about">About</a></li>
+  </ul>
+</div>
+
+<!-- Minimal Hero -->
+<section class="hero">
+  <div class="hero-tagline">DODDY · EST. 2026</div>
+  <h1 class="hero-headline">Men's grooming, <em>decoded.</em></h1>
+  <p class="hero-sub">No-BS guides on skin, smell, and self-care for Indian men. Science-backed. Fluff-free.</p>
+</section>
+
+<!-- Category Pills -->
+<div class="category-bar">
+  <button class="pill active" data-cat="all">All</button>
+  <button class="pill" data-cat="grooming">Grooming</button>
+  <button class="pill" data-cat="skin">Skin</button>
+  <button class="pill" data-cat="style">Style</button>
+  <button class="pill" data-cat="science">Science</button>
+</div>
+
+<!-- Featured -->
+<section class="featured">
+  <a href="body-odor-guide.html" class="featured-card" style="text-decoration:none; color:inherit;">
+    <div>
+      <div class="featured-meta">
+        <span class="cat">GROOMING</span>
+        <span>APR 12, 2026</span>
+        <span>12 MIN READ</span>
+      </div>
+      <h2 class="featured-title">How to Get Rid of Body Odor <em>Permanently</em></h2>
+      <p class="featured-excerpt">You've tried every deodorant. You still smell by 4 PM. Here's the complete science-backed guide to fixing body odor at the source — not masking it.</p>
+      <span class="read-link">Read the full guide <span class="arrow">→</span></span>
+    </div>
+    <div class="featured-visual">
+      <div class="featured-visual-text">FIX<br>THE<br>SOURCE</div>
+    </div>
+  </a>
+</section>
+
+<!-- Latest -->
+<div class="section-title">
+  <h2><span class="num">01 /</span>LATEST</h2>
+  <a href="#" class="view-all">View all →</a>
+</div>
+
+<section class="grid">
+  <a href="stop-sweating-guide.html" class="card" style="text-decoration:none; color:inherit;">
+    <div class="card-meta">
+      <span class="cat">GROOMING</span>
+      <span>APR 11, 2026</span>
+      <span>10 MIN</span>
+    </div>
+    <h3 class="card-title">How to Stop Sweating So Much (Without Antiperspirant)</h3>
+    <p class="card-excerpt">Excessive sweating isn't a hygiene problem — it's a signal. The real causes of hyperhidrosis and 7 science-backed ways to fix it naturally.</p>
+    <div class="card-footer">
+      <span>By Doddy Editorial</span>
+      <span class="arrow">→</span>
+    </div>
+  </a>
+
+  <a href="body-odor-guide.html" class="card" style="text-decoration:none; color:inherit;">
+    <div class="card-meta">
+      <span class="cat">GROOMING</span>
+      <span>APR 12, 2026</span>
+      <span>12 MIN</span>
+    </div>
+    <h3 class="card-title">How to Get Rid of Body Odor Permanently</h3>
+    <p class="card-excerpt">The complete guide: what causes it, why deodorant isn't enough, and the 9 fixes that actually work long-term.</p>
+    <div class="card-footer">
+      <span>By Doddy Editorial</span>
+      <span class="arrow">→</span>
+    </div>
+  </a>
+</section>
+
+<!-- Newsletter -->
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <span class="newsletter-label">THE DODDY DISPATCH</span>
+    <h2>One sharp read. <em>Every Sunday.</em></h2>
+    <p>The best new guide each week, plus one under-the-radar tip. No spam. Unsubscribe anytime.</p>
+    <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+      <input type="email" placeholder="you@email.com" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="newsletter-trust">
+      <span class="accent">✓</span> Free · <span class="accent">✓</span> 4-min read · <span class="accent">✓</span> Zero spam
+    </p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">Doddy<span class="logo-dot"></span></div>
+        <p>The blog for Indian men who want to get grooming, skin, and self-care right — without the marketing BS.</p>
+        <div class="socials">
+          <a class="social-btn" href="#">IG</a>
+          <a class="social-btn" href="#">X</a>
+          <a class="social-btn" href="#">YT</a>
+          <a class="social-btn" href="#">RSS</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Read</h4>
+        <ul>
+          <li><a href="#">Grooming</a></li>
+          <li><a href="#">Skin</a></li>
+          <li><a href="#">Style</a></li>
+          <li><a href="#">Science</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Newsletter</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Disclosure</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Doddy</span>
+      <span class="built-by">Part of the <a href="https://smelloff.in">Smelloff</a> family · Made in Hyderabad 🇮🇳</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Category filter (placeholder for when more cards exist)
+document.querySelectorAll('.pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+  });
+});
+
+function handleNewsletter(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button');
+  const input = e.target.querySelector('input');
+  btn.textContent = 'Subscribed ✓';
+  btn.style.background = 'var(--text)';
+  input.value = '';
+  setTimeout(() => {
+    btn.textContent = 'Subscribe';
+    btn.style.background = 'var(--accent)';
+  }, 3000);
+}
+</script>
+
+</body>
+</html>
