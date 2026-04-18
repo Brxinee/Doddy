@@ -1,0 +1,23 @@
+<section class="error-section">
+  <div class="error-number">404</div>
+  <h1 class="error-title">This page wandered off.</h1>
+  <p class="error-sub">The URL you followed doesn't exist here. It might have moved, been deleted, or never existed in the first place.</p>
+
+  <div class="error-search">
+    <p class="error-search-label">Try searching for what you were looking for:</p>
+    <div class="search-inline-wrap">
+      <input type="search" id="error-search-input" class="search-input-inline" placeholder="Search posts…" aria-label="Search posts">
+      <button class="search-inline-btn" onclick="document.getElementById('search-trigger').click()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        Search
+      </button>
+    </div>
+  </div>
+
+  <div class="error-recent">
+    <h2 class="error-recent-heading">Recent posts</h2>
+    {{recent_posts_html}}
+  </div>
+
+  <a href="/" class="error-home-link">← Back to home</a>
+</section>
