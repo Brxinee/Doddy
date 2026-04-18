@@ -231,7 +231,7 @@
 <script src="/script.js" defer></script>
 <script>
 (function(){
-  var els = document.querySelectorAll('.card, .card-lead, .masthead, .newsletter-band, .footer, .section-label, .cta-final-wrap');
+  var els = document.querySelectorAll('.card, .card-lead, .masthead, .newsletter-band, .footer, .cta-final-wrap');
   if (!('IntersectionObserver' in window)) {
     els.forEach(function(el){ el.classList.add('visible'); });
     return;
