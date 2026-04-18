@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <!-- =========================================================
      PRIMARY META
@@ -47,12 +47,12 @@
 <!-- =========================================================
      STYLES
      ========================================================= -->
-<link rel="stylesheet" href="/doddy/styles.css">
+<link rel="stylesheet" href="/styles.css">
 
 <!-- =========================================================
      FAVICON
      ========================================================= -->
-<link rel="icon" href="/doddy/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 
 <!-- =========================================================
      ARTICLE JSON-LD
@@ -140,7 +140,7 @@
 
 <nav class="nav">
   <div class="nav-inner">
-    <a href="/doddy/" class="brand">Doddy</a>
+    <a href="/" class="brand">Doddy</a>
     <div class="nav-meta">Honest notes on smell, sweat &amp; self</div>
     <a href="https://smelloff.in?utm_source=doddy&amp;utm_medium=blog&amp;utm_campaign=nav" class="nav-cta" data-cta="nav">Shop ODORSTRIKE</a>
   </div>
@@ -245,26 +245,26 @@
   <div class="related-grid">
 
     <article class="card">
-      <a href="/doddy/posts/{{RELATED_1_SLUG}}.html" class="card-visual card-visual-alt">
+      <a href="/posts/{{RELATED_1_SLUG}}.html" class="card-visual card-visual-alt">
         <div class="card-visual-text">{{RELATED_1_VISUAL}}</div>
       </a>
-      <h3><a href="/doddy/posts/{{RELATED_1_SLUG}}.html">{{RELATED_1_TITLE}}</a></h3>
+      <h3><a href="/posts/{{RELATED_1_SLUG}}.html">{{RELATED_1_TITLE}}</a></h3>
       <div class="meta">{{RELATED_1_META}}</div>
     </article>
 
     <article class="card">
-      <a href="/doddy/posts/{{RELATED_2_SLUG}}.html" class="card-visual card-visual-alt-2">
+      <a href="/posts/{{RELATED_2_SLUG}}.html" class="card-visual card-visual-alt-2">
         <div class="card-visual-text">{{RELATED_2_VISUAL}}</div>
       </a>
-      <h3><a href="/doddy/posts/{{RELATED_2_SLUG}}.html">{{RELATED_2_TITLE}}</a></h3>
+      <h3><a href="/posts/{{RELATED_2_SLUG}}.html">{{RELATED_2_TITLE}}</a></h3>
       <div class="meta">{{RELATED_2_META}}</div>
     </article>
 
     <article class="card">
-      <a href="/doddy/posts/{{RELATED_3_SLUG}}.html" class="card-visual card-visual-alt">
+      <a href="/posts/{{RELATED_3_SLUG}}.html" class="card-visual card-visual-alt">
         <div class="card-visual-text">{{RELATED_3_VISUAL}}</div>
       </a>
-      <h3><a href="/doddy/posts/{{RELATED_3_SLUG}}.html">{{RELATED_3_TITLE}}</a></h3>
+      <h3><a href="/posts/{{RELATED_3_SLUG}}.html">{{RELATED_3_TITLE}}</a></h3>
       <div class="meta">{{RELATED_3_META}}</div>
     </article>
 
@@ -281,10 +281,10 @@
     <div>
       <h4>Read</h4>
       <ul>
-        <li><a href="/doddy/">All posts</a></li>
-        <li><a href="/doddy/#howto">How-to</a></li>
-        <li><a href="/doddy/#science">Science</a></li>
-        <li><a href="/doddy/#confessional">Confessional</a></li>
+        <li><a href="/">All posts</a></li>
+        <li><a href="/#howto">How-to</a></li>
+        <li><a href="/#science">Science</a></li>
+        <li><a href="/#confessional">Confessional</a></li>
       </ul>
     </div>
     <div>
@@ -301,6 +301,15 @@
   </div>
 </footer>
 
-<script src="/doddy/script.js" defer></script>
+<script src="/script.js" defer></script>
+<script>
+(function(){
+  var els = document.querySelectorAll(".card, .card-lead, .post-header, .tldr, .pullquote, .cta-inline, .cta-final-wrap, .related, .newsletter-band, .footer");
+  if (!("IntersectionObserver" in window)) { els.forEach(function(el){ el.classList.add("visible"); }); return; }
+  els.forEach(function(el){ el.classList.add("reveal"); });
+  var io = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("visible"); io.unobserve(e.target); } }); }, { threshold: 0.08 });
+  els.forEach(function(el){ io.observe(el); });
+})();
+</script>
 </body>
 </html>

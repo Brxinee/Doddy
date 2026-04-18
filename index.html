@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Doddy — Honest notes on smell, sweat &amp; self</title>
 <meta name="description" content="Doddy is an independent blog about body odor, sweat, fabric, hygiene, and the quiet things men worry about. Published from Hyderabad by Smelloff.">
 <meta name="author" content="Doddy">
@@ -189,20 +189,20 @@
     <div>
       <h4>Topics</h4>
       <ul>
-        <li><a href="/doddy/">All Posts</a></li>
-        <li><a href="/doddy/#howto">How-To</a></li>
-        <li><a href="/doddy/#science">Science</a></li>
-        <li><a href="/doddy/#confessional">Confessional</a></li>
-        <li><a href="/doddy/#myth-busting">Myth-Busting</a></li>
+        <li><a href="/">All Posts</a></li>
+        <li><a href="/#howto">How-To</a></li>
+        <li><a href="/#science">Science</a></li>
+        <li><a href="/#confessional">Confessional</a></li>
+        <li><a href="/#myth-busting">Myth-Busting</a></li>
       </ul>
     </div>
     <div>
       <h4>Recent Posts</h4>
       <ul class="footer-post-list">
-        <li><a href="/doddy/posts/why-clothes-smell-after-washing.html">Why Your Clothes Smell After Washing</a></li>
-        <li><a href="/doddy/posts/sweat-vs-odor.html">Sweat Doesn't Stink. Bacteria Do.</a></li>
-        <li><a href="/doddy/posts/gym-bag-stink.html">Kill the Smell in Your Gym Bag</a></li>
-        <li><a href="/doddy/posts/deodorant-vs-antiperspirant-vs-mist.html">Deodorant vs Antiperspirant vs Mist</a></li>
+        <li><a href="/posts/why-clothes-smell-after-washing.html">Why Your Clothes Smell After Washing</a></li>
+        <li><a href="/posts/sweat-vs-odor.html">Sweat Doesn't Stink. Bacteria Do.</a></li>
+        <li><a href="/posts/gym-bag-stink.html">Kill the Smell in Your Gym Bag</a></li>
+        <li><a href="/posts/deodorant-vs-antiperspirant-vs-mist.html">Deodorant vs Antiperspirant vs Mist</a></li>
       </ul>
     </div>
     <div>
@@ -213,7 +213,7 @@
       </ul>
       <h4 class="footer-h4-spaced">More</h4>
       <ul>
-        <li><a href="/doddy/sitemap.xml">Sitemap</a></li>
+        <li><a href="/sitemap.xml">Sitemap</a></li>
         <li><a href="https://smelloff.in" target="_blank" rel="noopener noreferrer">About Smelloff</a></li>
       </ul>
     </div>
@@ -229,5 +229,21 @@
 </footer>
 
 <script src="/script.js" defer></script>
+<script>
+(function(){
+  var els = document.querySelectorAll('.card, .card-lead, .masthead, .newsletter-band, .footer, .cta-final-wrap');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function(el){ el.classList.add('visible'); });
+    return;
+  }
+  els.forEach(function(el){ el.classList.add('reveal'); });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  els.forEach(function(el){ io.observe(el); });
+})();
+</script>
 </body>
 </html>
