@@ -29,7 +29,11 @@
 html, body { margin: 0; padding: 0; }
 img, svg { display: block; max-width: 100%; height: auto; }
 a { color: inherit; text-decoration: none; }
-button { font: inherit; background: none; border: none; cursor: pointer; color: inherit; padding: 0; }
+button { font: inherit; background: none; border: none; cursor: pointer; color: inherit; padding: 0; user-select: none; -webkit-user-select: none; }
+
+/* Prevent tap text-selection on interactive elements */
+.nav, .nav-cta, .brand, .cta-button, .share-btn, .newsletter-btn, .post-tag, .footer-social-link,
+[role="button"] { user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; }
 
 /* =========== BASE =========== */
 html { scroll-behavior: smooth; }
