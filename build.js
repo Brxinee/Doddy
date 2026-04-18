@@ -146,6 +146,33 @@ function loadPosts() {
 
 // ─── HTML Builders ───────────────────────────────────────────────────────────
 
+// Card visual text: first ~5 words of dek split across lines with last word accented
+function cardVisualText(post) {
+  const words = post.dek.split(' ').slice(0, 6);
+  const last = words.pop();
+  return `${words.join(' ')}<br><em>${last}</em>`;
+}
+
+const CARD_VARIANTS = ['', ' card-v2', ' card-v3', ' card-v4'];
+
+function buildPostCard(post, idx) {
+  const variant = CARD_VARIANTS[idx % CARD_VARIANTS.length];
+  const visual = post.hero
+    ? `<img src="${post.hero}" alt="${post.title}" class="card-thumb-img" loading="lazy">`
+    : `<div class="card-thumb-text">${cardVisualText(post)}</div>`;
+  return `<article class="post-card${variant}">
+  <a href="/posts/${post.slug}/" class="post-card-link">
+    <div class="card-thumb">${visual}</div>
+    <div class="card-body">
+      <span class="topic-pill">${post.topic}</span>
+      <h3 class="card-title">${post.title}</h3>
+      <p class="card-dek">${post.dek}</p>
+      <span class="card-meta">${isoDate(post.date)} &middot; ${post.minutes} min read</span>
+    </div>
+  </a>
+</article>`;
+}
+
 function buildPostRow(post) {
   return `<article class="post-row">
   <a href="/posts/${post.slug}/" class="post-row-link">
@@ -158,14 +185,31 @@ function buildPostRow(post) {
 }
 
 function buildFeaturedCard(post) {
+  const visual = post.hero
+    ? `<img src="${post.hero}" alt="${post.title}" class="featured-thumb-img" loading="eager">`
+    : `<div class="featured-thumb"><div class="featured-thumb-text">${cardVisualText(post)}</div></div>`;
   return `<article class="featured-post">
   <a href="/posts/${post.slug}/" class="featured-post-link">
-    <div class="featured-topic"><span class="topic-pill">${post.topic}</span></div>
-    <h2 class="featured-title">${post.title}</h2>
-    <p class="featured-dek">${post.dek}</p>
-    <div class="featured-meta">${post.date_formatted} &middot; ${post.minutes} min read</div>
+    ${visual}
+    <div class="featured-body">
+      <div class="featured-topic"><span class="topic-pill">${post.topic}</span></div>
+      <h2 class="featured-title">${post.title}</h2>
+      <p class="featured-dek">${post.dek}</p>
+      <div class="featured-meta">${post.date_formatted} &middot; ${post.minutes} min read</div>
+    </div>
   </a>
 </article>`;
+}
+
+function buildOdorStrikeCTA() {
+  return `<section class="odorstrike-cta">
+  <div class="odorstrike-cta-inner">
+    <div class="odorstrike-cta-label">BROUGHT TO YOU BY</div>
+    <h2 class="odorstrike-cta-heading">Smelloff ODORSTRIKE</h2>
+    <p class="odorstrike-cta-sub">Fabric odor eliminator. Kills the smell in your clothes at a molecular level. Not a cover-up. ₹159. One spray, done.</p>
+    <a href="https://smelloff.in?utm_source=doddy&utm_medium=blog&utm_campaign=home-cta" class="odorstrike-cta-btn" target="_blank" rel="noopener noreferrer">Shop ODORSTRIKE →</a>
+  </div>
+</section>`;
 }
 
 function buildTopicStrip(topics) {
@@ -296,7 +340,8 @@ function buildHomePage(posts, baseTemplate, homeTemplate) {
   const featured = posts[0];
   const rest = posts.slice(1);
 
-  const postsList = buildFeaturedCard(featured) + rest.map(buildPostRow).join('');
+  const cardsGrid = `<div class="cards-grid">${rest.map((p, i) => buildPostCard(p, i)).join('')}</div>`;
+  const postsList = buildFeaturedCard(featured) + cardsGrid + buildOdorStrikeCTA();
   const topicsStrip = buildTopicStrip(topics);
 
   const content = render(homeTemplate, { posts_list: postsList, topics_strip: topicsStrip });
