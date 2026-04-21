@@ -1,13 +1,20 @@
-<section class="archive-header">
-  <div class="breadcrumb">
-    <a href="/">Writing</a>
-    <span class="breadcrumb-sep" aria-hidden="true">›</span>
-    <span aria-current="page">Archive</span>
-  </div>
-  <h1 class="archive-title">Archive</h1>
-  <p class="archive-sub">Every post, reverse chronological.</p>
+<section class="container listing-hero reveal">
+  <p class="eyebrow">Blog</p>
+  <h1 class="listing-title">All Articles</h1>
+  <p class="listing-sub">Browse every post with quick filtering by topic and a live search.</p>
 </section>
 
-<section class="archive-list">
-  {{archive_html}}
+<section class="container reveal">
+  <div class="listing-tools">
+    <input id="blog-search" class="listing-search" type="search" placeholder="Search articles..." aria-label="Search articles">
+    <div class="category-filters" aria-label="Category filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      {{category_filters}}
+    </div>
+  </div>
+
+  <div class="blog-grid" id="blog-grid">
+    {{archive_html}}
+  </div>
+  <p id="listing-empty" class="listing-empty" hidden>No posts match your search.</p>
 </section>

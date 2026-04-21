@@ -1,30 +1,29 @@
-<section class="intro-strip">
-  <p class="intro-text">Notes on building Smelloff, design, and whatever I'm figuring out.</p>
-  <div class="author-chip">
-    <span class="author-avatar" aria-hidden="true">B</span>
-    <span>By <strong>Brainee</strong> &middot; Hyderabad</span>
-  </div>
+<section class="hero container reveal">
+  <p class="eyebrow">Doddy Journal</p>
+  <h1 class="hero-title">A quiet place for ideas that age well.</h1>
+  <p class="hero-sub">Long-form notes on design, product thinking, and the craft of building. Minimal, calm, and deeply readable.</p>
 </section>
 
-<section class="writing-section">
-  <div class="section-label">WRITING</div>
+<section class="container reveal">
+  <div class="section-head">
+    <h2>Featured articles</h2>
+  </div>
   {{posts_list}}
 </section>
 
-<section class="topics-section">
-  <div class="section-label">TOPICS</div>
-  <div class="topics-strip">
-    {{topics_strip}}
+<section class="container reveal categories-section">
+  <div class="section-head">
+    <h2>Categories</h2>
   </div>
+  <div class="topics-strip">{{topics_strip}}</div>
 </section>
 
-<section class="newsletter-block home-newsletter">
-  <div class="newsletter-inner">
-    <h2 class="newsletter-heading">Stay in the loop</h2>
-    <p class="newsletter-sub">Get new posts in your inbox. No spam. Unsubscribe whenever.</p>
-    <form class="newsletter-form" action="https://buttondown.email/api/emails/embed-subscribe/doddy" method="post" target="_blank">
-      <input type="email" name="email" placeholder="you@example.com" required class="newsletter-input" aria-label="Email address">
-      <button type="submit" class="newsletter-btn">Subscribe</button>
-    </form>
-  </div>
+<section class="container reveal newsletter-panel">
+  <h2>Join the newsletter</h2>
+  <p>One thoughtful email when new writing drops. No clutter.</p>
+  <form class="newsletter-form" action="https://buttondown.email/api/emails/embed-subscribe/doddy" method="post" target="_blank">
+    <label for="home-email" class="sr-only">Email address</label>
+    <input id="home-email" class="newsletter-input" type="email" name="email" required placeholder="you@example.com">
+    <button class="newsletter-btn" type="submit">Subscribe</button>
+  </form>
 </section>
