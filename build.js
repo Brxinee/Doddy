@@ -146,28 +146,18 @@ function loadPosts() {
 
 // ─── HTML Builders ───────────────────────────────────────────────────────────
 
-// Card visual text: first ~5 words of dek split across lines with last word accented
-function cardVisualText(post) {
-  const words = post.dek.split(' ').slice(0, 6);
-  const last = words.pop();
-  return `${words.join(' ')}<br><em>${last}</em>`;
-}
-
-const CARD_VARIANTS = ['', ' card-v2', ' card-v3', ' card-v4'];
-
 function buildPostCard(post, idx) {
-  const variant = CARD_VARIANTS[idx % CARD_VARIANTS.length];
   const visual = post.hero
     ? `<img src="${post.hero}" alt="${post.title}" class="card-thumb-img" loading="lazy">`
-    : `<div class="card-thumb-text">${cardVisualText(post)}</div>`;
-  return `<article class="post-card${variant}">
+    : '';
+  return `<article class="post-card">
   <a href="/posts/${post.slug}/" class="post-card-link">
     <div class="card-thumb">${visual}</div>
     <div class="card-body">
       <span class="topic-pill">${post.topic}</span>
       <h3 class="card-title">${post.title}</h3>
       <p class="card-dek">${post.dek}</p>
-      <span class="card-meta">${isoDate(post.date)} &middot; ${post.minutes} min read</span>
+      <span class="card-meta">${post.date_formatted} &middot; ${post.minutes} min read</span>
     </div>
   </a>
 </article>`;
@@ -187,10 +177,10 @@ function buildPostRow(post) {
 function buildFeaturedCard(post) {
   const visual = post.hero
     ? `<img src="${post.hero}" alt="${post.title}" class="featured-thumb-img" loading="eager">`
-    : `<div class="featured-thumb"><div class="featured-thumb-text">${cardVisualText(post)}</div></div>`;
+    : '';
   return `<article class="featured-post">
   <a href="/posts/${post.slug}/" class="featured-post-link">
-    ${visual}
+    <div class="featured-thumb">${visual}</div>
     <div class="featured-body">
       <div class="featured-topic"><span class="topic-pill">${post.topic}</span></div>
       <h2 class="featured-title">${post.title}</h2>
@@ -199,17 +189,6 @@ function buildFeaturedCard(post) {
     </div>
   </a>
 </article>`;
-}
-
-function buildOdorStrikeCTA() {
-  return `<section class="odorstrike-cta">
-  <div class="odorstrike-cta-inner">
-    <div class="odorstrike-cta-label">BROUGHT TO YOU BY</div>
-    <h2 class="odorstrike-cta-heading">Smelloff ODORSTRIKE</h2>
-    <p class="odorstrike-cta-sub">Fabric odor eliminator. Kills the smell in your clothes at a molecular level. Not a cover-up. ₹159. One spray, done.</p>
-    <a href="https://smelloff.in?utm_source=doddy&utm_medium=blog&utm_campaign=home-cta" class="odorstrike-cta-btn" target="_blank" rel="noopener noreferrer">Shop ODORSTRIKE →</a>
-  </div>
-</section>`;
 }
 
 function buildTopicStrip(topics) {
@@ -341,7 +320,7 @@ function buildHomePage(posts, baseTemplate, homeTemplate) {
   const rest = posts.slice(1);
 
   const cardsGrid = `<div class="cards-grid">${rest.map((p, i) => buildPostCard(p, i)).join('')}</div>`;
-  const postsList = buildFeaturedCard(featured) + cardsGrid + buildOdorStrikeCTA();
+  const postsList = buildFeaturedCard(featured) + cardsGrid;
   const topicsStrip = buildTopicStrip(topics);
 
   const content = render(homeTemplate, { posts_list: postsList, topics_strip: topicsStrip });
@@ -394,21 +373,26 @@ function buildTopicPage(topic, topicPosts, baseTemplate, topicTemplate) {
 }
 
 function buildArchivePage(posts, baseTemplate, archiveTemplate) {
-  const byYear = {};
-  for (const p of posts) {
-    const yr = new Date(p.date).getFullYear();
-    if (!byYear[yr]) byYear[yr] = [];
-    byYear[yr].push(p);
-  }
-
-  const archiveHtml = Object.keys(byYear).sort((a, b) => b - a).map(yr => {
-    const rows = byYear[yr].map(p =>
-      `<li class="archive-row"><span class="archive-date">${isoDate(p.date)}</span> <a href="/posts/${p.slug}/">${p.title}</a></li>`
-    ).join('');
-    return `<div class="archive-year"><h2 class="archive-year-heading">${yr}</h2><ul class="archive-year-list">${rows}</ul></div>`;
+  const categories = [...new Set(posts.map((p) => p.topic))];
+  const categoryFilters = categories
+    .map((category) => `<button class="filter-btn" data-filter="${category.toLowerCase()}">${category}</button>`)
+    .join('');
+  const archiveHtml = posts.map((post) => {
+    const visual = post.hero ? `<img src="${post.hero}" alt="${post.title}" loading="lazy">` : '';
+    return `<article class="archive-card" data-category="${post.topic.toLowerCase()}" data-search="${(post.title + ' ' + post.dek + ' ' + post.topic).toLowerCase()}">
+  <a class="archive-card-link" href="/posts/${post.slug}/">
+    <div class="archive-thumb">${visual}</div>
+    <div class="archive-body">
+      <span class="topic-pill">${post.topic}</span>
+      <h2 class="archive-card-title">${post.title}</h2>
+      <p class="archive-card-excerpt">${post.dek}</p>
+      <p class="archive-card-meta">${post.date_formatted} • ${post.minutes} min read</p>
+    </div>
+  </a>
+</article>`;
   }).join('');
 
-  const content = render(archiveTemplate, { archive_html: archiveHtml });
+  const content = render(archiveTemplate, { archive_html: archiveHtml, category_filters: categoryFilters });
 
   return render(baseTemplate, {
     page_title: `Archive — ${SITE.name}`,
